@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'view/home_page.dart';
 
 void main() async {
@@ -12,14 +13,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Reddit Clone',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // primarySwatch: Colors.indigo,
-        useMaterial3: true,
-      ),
-      home: const HomePage(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Reddit Clone',
+          theme: ThemeData(useMaterial3: true, ),
+          home: child,
+        );
+      },
+      child: HomePage(),
     );
   }
 }
