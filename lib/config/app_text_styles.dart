@@ -9,6 +9,7 @@ class AppTextStyle {
   static const TextStyle fontSize14 = TextStyle(fontSize: 14);
   static const TextStyle fontSize16 = TextStyle(fontSize: 16);
   static const TextStyle fontSize23 = TextStyle(fontSize: 23);
+  static const TextStyle fontSize18 = TextStyle(fontSize: 18);
 
 
 
@@ -87,4 +88,17 @@ class AppTextStyle {
       .merge(fontWeight400)
       .merge(fontSize14)
       .copyWith(color:AppColors.greyColor.withOpacity(.8));
+
+  static TextStyle get font14White500 => fontFamily
+      .merge(fontWeight500)
+      .merge(fontSize14)
+      .copyWith(color: AppColors.white);
+       static TextStyle get font18white500 => fontFamily
+      .merge(fontWeight700)
+      .merge(fontSize18)
+      .copyWith(color: AppColors.white);
+         static TextStyle get font16White700 => fontFamily
+      .merge(fontWeight500)
+      .merge(fontSize16)
+      .copyWith(color:AppColors.white);
 }

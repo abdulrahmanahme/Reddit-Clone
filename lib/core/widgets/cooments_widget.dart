@@ -51,21 +51,24 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                             'Europeans are the ones who loves Racism most 😂😂😂 This video would be all over in sub if Turkish people did this 😂😂',
                       ),
                       10.h.verticalSpace,
-                      SizedBox(child:
-                          ListView.builder(
-                            itemCount: 500,itemBuilder: (contex, int index) {
-                        return CommentsCard(
-                          title: 'Abdo Ahmed',
-                          des:
-                              'Europeans are the ones who loves Racism most 😂😂😂 This video would be all over in sub if Turkish people did this 😂😂',
-                          imageAuthor:
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
-                          time: '4mo',
-                          subIcon:
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
-                          commentsType: 'Vistior',
-                        );
-                      }),),
+                      SizedBox(
+                        height: .5.sh,
+                        child: ListView.builder(
+                            itemCount: 500,
+                            itemBuilder: (contex, int index) {
+                              return CommentsCard(
+                                title: 'Abdo Ahmed',
+                                des:
+                                    'Europeans are the ones who loves Racism most 😂😂😂 This video would be all over in sub if Turkish people did this 😂😂',
+                                imageAuthor:
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
+                                time: '4mo',
+                                subIcon:
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
+                                commentsType: 'Vistior',
+                              );
+                            }),
+                      ),
                     ],
                   ),
                 ),

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: HomePage(),
+      child: RedditVideoPlayer(videoUrl: 'https://v.redd.it/gvuvwpvo4ubd1/DASHPlaylist.mpd?a=1723478534%2CMmQ3N2ZmNmUzOTZmMmQyNjg2OGUzNmZhYTA0ZjFlYTc5OTg3MGZhOTgxOGQ3NjIxODU1Nzc2N2E1MzFhYjcwNg%3D%3D&amp;v=1&amp;f=sd'),
     );
   }
 }
