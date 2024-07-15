@@ -23,7 +23,6 @@ class VideoProvider extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         tokenModel = TokenModel.fromJson(response.data);
-        print('sssrrrrrrrrrrr ${tokenModel!.accessToken}');
         NetworkManager.setToken(tokenModel!.accessToken);
       }
     } catch (e) {}

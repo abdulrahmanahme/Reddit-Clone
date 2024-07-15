@@ -8,12 +8,10 @@ class NetworkManager {
   late SharedPrefManager prefs;
   static const baseUrl = 'https://oauth.reddit.com';
   static const token = 'https://www.reddit.com/api/v1/access_token';
-    
   static const urlEndPinot = 'https://oauth.reddit.com/r/euro2024/comments/1e0ibu0';
   static const tokenEndPinot = 'https://www.reddit.com/api/v1/access_token';
-  static String basicAuth = 'Basic ' +
-      base64Encode(utf8.encode('${AppConst.username}:${AppConst.password}'));
-
+ static    String basicAuth = 'Basic ' +
+        base64Encode(utf8.encode('${AppConst.username}:${AppConst.password}'));
   static String getToken() {
     SharedPrefManager sharedPrefManager =
         GetItManager.getIt.get<SharedPrefManager>();

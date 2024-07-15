@@ -9,7 +9,7 @@ class VideoRepo {
   Future<Response> getRequestVideoDetails() async {
     var response = await dio.get(NetworkManager.urlEndPinot,
         options:
-            Options(headers: {'Authorization': 'Bearer  ${AppConst.token}'}));
+            Options(headers: {'Authorization': 'Bearer  ${NetworkManager.getToken()}'}));
 
     return response;
   }

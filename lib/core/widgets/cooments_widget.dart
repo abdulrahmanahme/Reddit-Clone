@@ -147,4 +147,10 @@ class _CommentsWidgetState extends State<CommentsWidget> {
       },
     );
   }
+
+  String getTime(utcTimeString) {
+    DateTime utcTime = DateTime.parse(utcTimeString);
+    DateTime localTime = utcTime.toLocal();
+    return localTime.toString();
+  }
 }

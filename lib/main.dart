@@ -52,4 +52,5 @@ class MyApp extends StatelessWidget {
 setup() async {
   GetItManager.setUp();
   await GetItManager.getIt.get<SharedPrefManager>().init();
+  VideoProvider().getToken();
 }

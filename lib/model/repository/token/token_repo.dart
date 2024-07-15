@@ -6,7 +6,7 @@ class TokenRepo {
   Future<Response> getTokenRequest() async {
     
     var response = await dio.post(NetworkManager.tokenEndPinot,
-        data: {
+        queryParameters: {
           "grant_type": "password",
           "username": "Standard_Yam_4408",
           "password": "123456789abdo"

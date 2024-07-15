@@ -35,10 +35,13 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
   void initState() {
     super.initState();
     videoProvider = Provider.of(navKey.currentContext!);
-    videoProvider.getToken();
-    videoProvider.getVideoDetails().then((value) {
-      _initializeVideoPlayer(
-          value[0].data.children[0].data.media!.redditVideo.dashUrl);
+    videoProvider.getToken().then((value) {
+      Future.delayed(Duration(seconds: 2), () {
+        videoProvider.getVideoDetails().then((value) {
+          _initializeVideoPlayer(
+              value[0].data.children[0].data.media!.redditVideo.dashUrl);
+        });
+      });
     });
   }
 
@@ -76,7 +79,7 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
                         top: Radius.circular(20),
                       ),
                     ),
-                    builder: (context) =>  CommentsWidget(
+                    builder: (context) => CommentsWidget(
                       videoModel: pro.listVideModel,
                     ),
                   );
@@ -100,7 +103,7 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
                                   right: 10,
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start ,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       AppBarVideoWidget(
                                         title:
@@ -113,14 +116,16 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
                                       ),
                                       // Spacer(),
                                       TitleCardVideo(
-                                        name: '${pro.listVideModel[0].data.children[0].data.author}',
+                                        name:
+                                            '${pro.listVideModel[0].data.children[0].data.author}',
                                         image:
                                             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
                                         des: pro.listVideModel[0].data
                                             .children[0].data.selftext!,
-                                        title:'${pro.listVideModel[0].data.children[0].data.title}',
+                                        title:
+                                            '${pro.listVideModel[0].data.children[0].data.title}',
                                       ),
-                                     Row(
+                                      Row(
                                         children: [
                                           IconButton(
                                             icon: !_videoPlayerController
@@ -131,7 +136,7 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
                                                     color: AppColors.white,
                                                     height: 20.h,
                                                   )
-                                                :   SvgPicture.asset(
+                                                : SvgPicture.asset(
                                                     AppConst.svgPath +
                                                         "pause.svg",
                                                     color: AppColors.white,
@@ -195,16 +200,19 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
 
                                       Row(
                                         children: [
-                                           LikeIconWidget(
-                                            numberIcon: '${pro.listVideModel[0].data.children[0].data.ups}',
+                                          LikeIconWidget(
+                                            numberIcon:
+                                                '${pro.listVideModel[0].data.children[0].data.ups}',
                                           ),
                                           10.w.horizontalSpace,
-                                           IconMessageWidget(
-                                            numberComments: '${pro.listVideModel[0].data.children[0].data.numComments}',
+                                          IconMessageWidget(
+                                            numberComments:
+                                                '${pro.listVideModel[0].data.children[0].data.numComments}',
                                           ),
                                           const Spacer(),
-                                           IconReplyWidget(
-                                            numbersReply: '${pro.listVideModel[0].data.children[0].data.score}',
+                                          IconReplyWidget(
+                                            numbersReply:
+                                                '${pro.listVideModel[0].data.children[0].data.score}',
                                           ),
                                         ],
                                       ),
