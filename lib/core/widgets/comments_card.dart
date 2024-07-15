@@ -15,13 +15,18 @@ class CommentsCard extends StatelessWidget {
       required this.imageAuthor,
       required this.time,
     required  this.commentsType,
-     required this.subIcon});
+     required this.subIcon,
+      required this.likes,
+     });
   final String imageAuthor;
   final String title;
   final String des;
   final String time;
   final String subIcon;
   final String commentsType;
+  final int likes;
+
+  
 
 
 
@@ -96,7 +101,7 @@ class CommentsCard extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: .05.sw,
+                  width: .03.sw,
                 ),
                 IconButton(
                   onPressed: () {},
@@ -139,7 +144,7 @@ class CommentsCard extends StatelessWidget {
                     color: AppColors.normalGrey,
                   ),
                 ),
-                Text('1', style: AppTextStyle.font14NormalGrey700),
+                Text(likes.toString(), style: AppTextStyle.font14NormalGrey700),
                 IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(

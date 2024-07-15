@@ -8,12 +8,11 @@ import 'package:reddit_clone/core/widgets/cooments_author_data.dart';
 import 'package:reddit_clone/core/widgets/draggable_Icon.dart';
 import 'package:reddit_clone/core/widgets/test_from_feild.dart';
 import 'package:reddit_clone/utils/app_const.dart';
-import '../../config/app_colors.dart';
-import '../../config/app_text_styles.dart';
+import '../../model/model/video_model.dart';
 
 class CommentsWidget extends StatefulWidget {
-  const CommentsWidget({super.key});
-
+  const CommentsWidget({super.key, required this.videoModel});
+  final List<VideoModel> videoModel;
   @override
   State<CommentsWidget> createState() => _CommentsWidgetState();
 }
@@ -47,32 +46,64 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CommentsAuthorData(
-                        imageAuthor:
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
-                        title: 'abdoAhmed',
-                        des:
-                            'Europeans are the ones who loves Racism most 😂😂😂 This video would be all over in sub if Turkish people did this 😂😂',
-                      ),
-                      10.h.verticalSpace,
-                      SizedBox(
-                        height: .9.sh,
-                        child: ListView.builder(
-                            itemCount: 200,
-                            itemBuilder: (contex, int index) {
-                              return CommentsCard(
-                                title: 'Abdo Ahmed',
-                                des:
-                                    'Europeans are the ones who loves Racism most 😂😂😂 This video would be all over in sub if Turkish people did this 😂😂',
-                                imageAuthor:
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
-                                time: '4mo',
-                                subIcon:
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
-                                commentsType: 'Vistior',
-                              );
-                            }),
-                      ),
+                      CommentsAuthorData(
+                          imageAuthor:
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJO1wS3nRnTIRLp5iGNZxVJOilmUrkXB9UA&s',
+                          title:
+                              '${widget.videoModel[0].data.children[0].data.subredditNamePrefixed.name}',
+                          des:
+                              '${widget.videoModel[0].data.children[0].data.title}'),
+                      // 10.h.verticalSpace,
+                      widget.videoModel[1].data.children.isEmpty
+                          ? Container()
+                          : SizedBox(
+                              height: .9.sh,
+                              child: ListView.builder(
+                                  itemCount:
+                                      widget.videoModel[1].data.children.length,
+                                  itemBuilder: (contex, int index) {
+                                    return CommentsCard(
+                                      likes: widget.videoModel[1].data
+                                          .children[index].data.ups,
+                                      title:
+                                          '${widget.videoModel[1].data.children[index].data.author}',
+                                      des:
+                                          '${widget.videoModel[1].data.children[index].data.body}',
+                                      imageAuthor: widget
+                                              .videoModel[1]
+                                              .data
+                                              .children[index]
+                                              .data
+                                              .authorFlairRichtext
+                                              .isNotEmpty
+                                          ? widget
+                                              .videoModel[1]
+                                              .data
+                                              .children[index]
+                                              .data
+                                              .authorFlairRichtext[0]
+                                              .u!
+                                          : '',
+                                      time: '4mo',
+                                      subIcon: AppConst.image,
+                                      commentsType: widget
+                                              .videoModel[1]
+                                              .data
+                                              .children[index]
+                                              .data
+                                              .authorFlairRichtext
+                                              .isNotEmpty
+                                          ? widget
+                                              .videoModel[1]
+                                              .data
+                                              .children[index]
+                                              .data
+                                              .authorFlairRichtext[1]
+                                              .t!
+                                          : '',
+                                    );
+                                  }),
+                            ),
                       Padding(
                         padding:
                             EdgeInsets.only(bottom: 5, left: 10, right: 10),
@@ -82,24 +113,21 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                               child: TextFormFieldWithTitleWidget(
                                 title: '',
                                 hint: 'Add a comments',
-                                // controller: passwordController,
-                                // obscureText: loginProvider.isIconVisible ? false : true,
                                 suffixIconColor: Colors.grey,
-
                                 filled: true,
-
                                 keyboardType: TextInputType.visiblePassword,
                               ),
                             ),
                             Padding(
-                              padding:  EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25.r),
                                   color: Color(0xffF2F3F5),
                                 ),
                                 child: Padding(
-                                  padding:  EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 10),
                                   child: SvgPicture.asset(
                                       AppConst.svgPath + 'nav-arrow-down.svg'),
                                 ),

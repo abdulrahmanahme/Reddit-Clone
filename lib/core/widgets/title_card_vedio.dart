@@ -45,7 +45,9 @@ class _TitleCardVideoState extends State<TitleCardVideo> {
 
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Text(widget.title, style: AppTextStyle.font18white500),
+          child: Text(widget.title, style: AppTextStyle.font18white500,
+          overflow:TextOverflow.ellipsis ,
+          maxLines: 1,),
         ),
         5.h.verticalSpace,
         Padding(
