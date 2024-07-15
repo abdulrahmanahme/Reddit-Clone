@@ -33,7 +33,7 @@ class AppConst {
         bufferedColor: Colors.grey,
       ),
       autoInitialize: true,
-      showControlsOnInitialize: false, // Disable Chewie's controls
+      showControlsOnInitialize: false , // Disable Chewie's controls
     );
   }
  static   String formatDuration(Duration duration) {

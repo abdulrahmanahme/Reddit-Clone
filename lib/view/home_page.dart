@@ -100,7 +100,7 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
                                   right: 10,
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start ,
                                     children: [
                                       AppBarVideoWidget(
                                         title:
@@ -120,7 +120,7 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
                                             .children[0].data.selftext!,
                                         title:'${pro.listVideModel[0].data.children[0].data.title}',
                                       ),
-                                      Row(
+                                     Row(
                                         children: [
                                           IconButton(
                                             icon: !_videoPlayerController
@@ -131,7 +131,7 @@ class _RedditVideoPlayerState extends State<RedditVideoPlayer> {
                                                     color: AppColors.white,
                                                     height: 20.h,
                                                   )
-                                                : SvgPicture.asset(
+                                                :   SvgPicture.asset(
                                                     AppConst.svgPath +
                                                         "pause.svg",
                                                     color: AppColors.white,
